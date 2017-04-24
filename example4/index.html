@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Test</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+<form id="main" v-cloak>
+
+    <div class="bar">
+        <!-- Create a binding between the searchString model and the text field -->
+
+        <input type="text" v-model="searchString" placeholder="Enter your search terms" />
+    </div>
+
+    <ul>
+        <!-- Render a li element for every entry in the computed filteredArticles array. -->
+
+        <li v-for="article in filteredArticles">
+            <a v-bind:href="article.url"><img v-bind:src="article.image" /></a>
+            <p>{{article.title}}</p>
+        </li>
+    </ul>
+
+</form>
+
+    <script src="../vue.min.js"></script>
+    <script src="./script.js"></script>
+</body>
+
+</html>
