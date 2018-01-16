@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Example5</title>
+  <link rel="stylesheet" href="../styles/base.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <form id="main" v-cloak>
+    <div class="bar">
+      <a class="list-icon" :class="{'active': layout == 'list'}" @click="layout = 'list'"></a>
+      <a class="grid-icon" :class="{'active': layout == 'grid'}" @click="layout = 'grid'"></a>
+    </div>
+
+    <ul v-if="layout == 'grid'" class="grid">
+      <li v-for="a in articles">
+        <a :href="a.url" target="_blank"><img :src="a.image.large" /></a>
+      </li>
+    </ul>
+    <ul v-if="layout == 'list'" class="list">
+      <li v-for="a in articles">
+        <a :href="a.url" target="_blank"><img :src="a.image.small" /></a>
+        <p>{{ a.title }}</p>
+      </li>
+    </ul>
+  </form>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script type="text/javascript">
+const BASE_URL = 'http://tutorialzine.com/2016';
+const IMG_URL = 'http://cdn.tutorialzine.com/wp-content/uploads/2016';
+
+var demo = new Vue({
+	el: '#main',
+	data: {
+		layout: 'grid',
+		articles: [
+			{
+				title: 'What You Need To Know About CSS Variables',
+				url: `${BASE_URL}/03/what-you-need-to-know-about-css-variables/`,
+				image: {
+					large: `${IMG_URL}/03/css-variables.jpg`,
+					small: `${IMG_URL}/03/css-variables-150x150.jpg`
+				}
+			},
+			{
+				title: 'Freebie: 4 Great Looking Pricing Tables',
+				url: `${BASE_URL}/02/freebie-4-great-looking-pricing-tables/`,
+				image: {
+					large: `${IMG_URL}/02/great-looking-pricing-tables.jpg`,
+					small: `${IMG_URL}/02/great-looking-pricing-tables-150x150.jpg`
+				}
+			},
+			{
+				title: '20 Interesting JavaScript and CSS Libraries for February 2016',
+				url: `${BASE_URL}/02/20-interesting-javascript-and-css-libraries-for-february-2016/`,
+				image: {
+					large: `${IMG_URL}/02/interesting-resources-february.jpg`,
+					small: `${IMG_URL}/02/interesting-resources-february-150x150.jpg`
+				}
+			},
+			{
+				title: 'Quick Tip: The Easiest Way To Make Responsive Headers',
+				url: `${BASE_URL}/02/quick-tip-easiest-way-to-make-responsive-headers/`,
+				image: {
+					large: `${IMG_URL}/02/quick-tip-responsive-headers.png`,
+					small: `${IMG_URL}/02/quick-tip-responsive-headers-150x150.png`
+				}
+			},
+			{
+				title: 'Learn SQL In 20 Minutes',
+				url: `${BASE_URL}/01/learn-sql-in-20-minutes/`,
+				image: {
+					large: `${IMG_URL}/01/learn-sql-20-minutes.png`,
+					small: `${IMG_URL}/01/learn-sql-20-minutes-150x150.png`
+				}
+			}
+		]
+	}
+});
+</script>
+</html>
